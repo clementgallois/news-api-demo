@@ -1,27 +1,33 @@
-import logo from './logo.svg';
+import { useState, useEffect } from 'react';
 import './App.css';
 
+const apiKey = process.env.REACT_APP_NEWS_API_KEY;
+const apiUrl = process.env.REACT_APP_NEWS_API_URL;
+
 function App() {
+  const [loading, setLoading] = useState(true);
+  const [articles, setArticles] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      setLoading(true);
+      const top10Articles = await fetch(`${apiUrl}top-headlines?country=be&pageSize=10&apiKey=${apiKey}`);
+
+      const jsonData = await top10Articles.json();
+      setArticles(jsonData?.articles);
+      setLoading(false);
+    })();
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit
-          {' '}
-          <code>src/App.js</code>
-          {' '}
-          and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>Check News</h1>
       </header>
+      {loading
+        ? 'Loading...'
+        : articles.map((article) => <p>{article.title}</p>)}
+
     </div>
   );
 }
