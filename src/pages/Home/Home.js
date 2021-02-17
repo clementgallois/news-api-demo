@@ -10,13 +10,25 @@ function Home() {
     (async () => {
       setLoading(true);
       const jsonData = await getTopArticles({ pageSize: 10, country: 'be' });
+      if (jsonData.status === 'ok') {
         setArticles(jsonData?.articles);
+      } else if (jsonData.status === 'error') {
+        setError(jsonData.message);
+      }
       setLoading(false);
     })();
   }, []);
 
   if (loading) {
     return <p>Loading...</p>;
+  }
+  if (error) {
+    return (
+      <p>
+        Error:
+        {error}
+      </p>
+    );
   }
   return (
     <ul>
