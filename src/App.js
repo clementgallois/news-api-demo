@@ -11,7 +11,7 @@ function App() {
   useEffect(() => {
     (async () => {
       setLoading(true);
-      const top10Articles = await fetch(`${apiUrl}top-headlines?country=be&pageSize=10&apiKey=${apiKey}`);
+      const top10Articles = await fetch(`${apiUrl}/top-headlines?country=be&pageSize=10&apiKey=${apiKey}`);
 
       const jsonData = await top10Articles.json();
       setArticles(jsonData?.articles);
