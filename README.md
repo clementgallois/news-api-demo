@@ -2,6 +2,16 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Configuration
+you need to configure a .env file at the root of this project.
+You can rename the .env.example file in the project to .env and add **your** api key
+
+example :
+```
+REACT_APP_NEWS_API_KEY=4b58f4c308db3236ab12b94075d50ad6
+REACT_APP_NEWS_API_URL=https://newsapi.org/v2/
+```
+
 ## Available Scripts
 
 In the project directory, you can run:
