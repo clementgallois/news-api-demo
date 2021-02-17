@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
+import { getTopArticles } from './services/newsApi';
 import './App.css';
-
-const apiKey = process.env.REACT_APP_NEWS_API_KEY;
-const apiUrl = process.env.REACT_APP_NEWS_API_URL;
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -11,9 +9,7 @@ function App() {
   useEffect(() => {
     (async () => {
       setLoading(true);
-      const top10Articles = await fetch(`${apiUrl}/top-headlines?country=be&pageSize=10&apiKey=${apiKey}`);
-
-      const jsonData = await top10Articles.json();
+      const jsonData = await getTopArticles({ pageSize: 10, country: 'be' });
       setArticles(jsonData?.articles);
       setLoading(false);
     })();
