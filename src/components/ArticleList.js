@@ -1,13 +1,14 @@
 import PropTypes from 'prop-types';
+import Article from './Article';
 
 const ArticleList = ({ articlesData }) => {
   if (!articlesData || articlesData.length === 0) {
     return (<p>No Result to Display</p>);
   }
   return (
-    <ul className="article-list">
-      {articlesData.map((article) => <li className="article" key={article.url}>{article.title}</li>)}
-    </ul>
+    <section className="article-list">
+      {articlesData.map((article) => <Article article={article} />)}
+    </section>
   );
 };
 
