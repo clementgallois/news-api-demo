@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 const ArticleList = ({ articlesData }) => {
-  if (articlesData.length === 0) {
+  if (!articlesData || articlesData.length === 0) {
     return (<p>No Result to Display</p>);
   }
   return (
@@ -26,7 +26,7 @@ ArticleList.propTypes = {
 };
 
 ArticleList.defaultProps = {
-  articlesData: [],
+  articlesData: null,
 };
 
 export default ArticleList;

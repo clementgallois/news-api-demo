@@ -24,13 +24,19 @@ async function fetchWithToken(url, options) {
 
 async function requestNewsApi(endpoint, parameters) {
   const queryString = parametersToQueryString(parameters);
-  return fetchWithToken(`${API_URL}${endpoint}${queryString}`);
+  const response = await fetchWithToken(`${API_URL}${endpoint}${queryString}`);
+  if (response.status === 'error') {
+    throw new Error(response.message);
+  }
+  return response;
 }
 
 export async function getTopArticles(parameters) {
-  return requestNewsApi('/top-headlines', parameters);
+  const response = await requestNewsApi('/top-headlines', parameters);
+  return response.articles;
 }
 
 export async function getAllArticles(parameters) {
-  return requestNewsApi('/everything', parameters);
+  const response = await requestNewsApi('/everything', parameters);
+  return response.articles;
 }
