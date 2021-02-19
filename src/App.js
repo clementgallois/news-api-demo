@@ -4,9 +4,15 @@ import {
   Route,
   useHistory,
 } from 'react-router-dom';
+import styled from 'styled-components';
 import Home from './pages/Home';
 import Search from './pages/Search';
 import './App.css';
+
+const MainContent = styled.div`
+  margin:auto;
+  max-width:1140px;
+`;
 
 function SearchBar() {
   const history = useHistory();
@@ -30,14 +36,16 @@ function App() {
           <h1>Check News</h1>
           <SearchBar />
         </header>
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/search">
-            <Search />
-          </Route>
-        </Switch>
+        <MainContent>
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/search">
+              <Search />
+            </Route>
+          </Switch>
+        </MainContent>
       </div>
     </Router>
   );
