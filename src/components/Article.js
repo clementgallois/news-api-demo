@@ -5,7 +5,7 @@ const Thumbnail = styled.img`
   width: 100%;
 `;
 
-const StyledArticle = styled.section`
+const Section = styled.section`
     &{
       grid-column: span 3;
 
@@ -22,9 +22,27 @@ const StyledArticle = styled.section`
       }
     }
     &:nth-child(n+6){
-      grid-column: span 2;
+      grid-column: span 12;
+
+      display: grid;
+      grid-template-columns: repeat(12,1fr);
+      grid-column-gap: 1.5rem;
+      padding: 0;
+      ${Thumbnail} {
+        grid-column: span 3;
+      }
+      .description{
+        display: block;
+      }
     }
 `;
+
+const Content = styled.div`
+    grid-column: span 9;
+    position: relative;
+    padding-bottom: 1rem;
+`;
+
 const Article = ({
   // eslint-disable-next-line no-unused-vars
   author, content, description, publishedAt, title, url, urlToImage, source,
@@ -34,22 +52,24 @@ const Article = ({
     author, content, description, publishedAt, title, url, urlToImage, source,
   });
   return (
-    <StyledArticle className="article">
+    <Section className="article">
       <Thumbnail src={urlToImage} alt={title} />
-      <h2>{title}</h2>
-      <div className="article-source">
-        {source?.name ? source.name : 'Unknown source'}
-        {' '}
-        {author && (
+      <Content>
+        <h2>{title}</h2>
+        <div className="article-source">
+          {source?.name ? source.name : 'Unknown source'}
+          {' '}
+          {author && (
           <span className="author">
             by
             {' '}
             {author}
           </span>
-        )}
-      </div>
-      <div className="description">{description || content}</div>
-    </StyledArticle>
+          )}
+        </div>
+        <div className="description">{description || content}</div>
+      </Content>
+    </Section>
   );
 };
 
