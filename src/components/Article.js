@@ -1,40 +1,70 @@
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const Thumbnail = styled.img`
-  width: 100%;
+const Section = styled.section`
+  grid-column: span 3;
+  padding: 0;
+  font-family: "Helvetica Neue",Helvetica,Arial,Sans-Serif;;
+  font-weight: 400;
+  border-bottom:none;
+  &:first-child{
+    grid-row: 1/span 2;
+    grid-column: 1/span 6;
+  }
+
+  &:nth-child(n+2):nth-child(-n+3), &:nth-child(n+6){
+    border-bottom: 1px solid;
+    border-bottom-color: rgb(217 217 217);
+  }
+
+  &:nth-child(6){
+    padding-top: 1rem !important;
+    border-top:  1px solid;
+    border-top-color: rgb(217 217 217);
+  }
+
+  &:nth-child(n+6){
+    grid-column: span 12;
+    display: grid;
+    grid-template-columns: repeat(12,1fr);
+    grid-column-gap: 1.5rem;
+    padding: 0;
+  }
 `;
 
-const Section = styled.section`
-    &{
+const Thumbnail = styled.img`
+  position: relative;
+  width: 100%;
+  -webkit-transition: opacity .5s;
+  transition: opacity 1s;
+  opacity:${(props) => (props.imageLoaded ? '1' : '0')};
+
+
+  ${Section}:nth-child(n+6) &{
       grid-column: span 3;
+      margin-bottom: 1.5rem;
+  }
+`;
 
-      .description{
-        display: none;
-      }
-    }
-    &:first-child{
-      grid-row: 1/span 2;
-      grid-column: 1/span 6;
-      
-      .description{
-        display: block;
-      }
-    }
-    &:nth-child(n+6){
-      grid-column: span 12;
+const Title = styled.h2`
+  font-weight: 800;
+  padding: 1rem 0 0;
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.3;
+  
+  ${Section}:first-child &{
+    font-size: 2rem;
+    line-height: 1.2;
+    padding: 1.5rem 0 0;
+  }
 
-      display: grid;
-      grid-template-columns: repeat(12,1fr);
-      grid-column-gap: 1.5rem;
-      padding: 0;
-      ${Thumbnail} {
-        grid-column: span 3;
-      }
-      .description{
-        display: block;
-      }
-    }
+  ${Section}:nth-child(n+6) & {
+    padding: 0;
+    font-size: 1.5;
+    line-height: 1.286;
+  }
 `;
 
 const Content = styled.div`
@@ -43,21 +73,52 @@ const Content = styled.div`
     padding-bottom: 1rem;
 `;
 
+const Description = styled.div`
+  display: none;
+  font-size: 1rem;
+  margin: 0;
+  padding-bottom: 1em;
+
+  ${Section}:first-child &{
+    display: block;
+  }
+
+  ${Section}:nth-child(n+6) &{
+    display: block;
+  }
+`;
+
+const Source = styled.div`
+  padding: 0.5rem 0;
+  display: block;
+  color: #666666;
+
+  cite {
+    font-style: normal;
+  }
+
+  ${Section}:first-child & {
+    padding: 0.75rem 0 1rem;
+  }
+`;
+
 const Article = ({
   // eslint-disable-next-line no-unused-vars
   author, content, description, publishedAt, title, url, urlToImage, source,
 }) => {
-  console.log(description && description.length);
-  console.log({
-    author, content, description, publishedAt, title, url, urlToImage, source,
-  });
+  const [imageLoaded, setImageLoaded] = useState(false);
   return (
     <Section className="article">
-      <Thumbnail src={urlToImage} alt={title} />
+      <Thumbnail
+        src={urlToImage}
+        alt={title}
+        imageLoaded={imageLoaded}
+        onLoad={() => setImageLoaded(true)}
+      />
       <Content>
-        <h2>{title}</h2>
-        <div className="article-source">
-          {source?.name ? source.name : 'Unknown source'}
+        <Title>{title}</Title>
+        <Source>
+          <cite>{source?.name ? source.name : 'Unknown source'}</cite>
           {' '}
           {author && (
           <span className="author">
@@ -66,8 +127,8 @@ const Article = ({
             {author}
           </span>
           )}
-        </div>
-        <div className="description">{description || content}</div>
+        </Source>
+        <Description>{description || content}</Description>
       </Content>
     </Section>
   );
