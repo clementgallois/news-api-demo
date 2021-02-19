@@ -7,7 +7,8 @@ const ArticleList = ({ articlesData }) => {
   }
   return (
     <section className="article-list">
-      {articlesData.map((article) => <Article article={article} />)}
+      {/* eslint-disable-next-line react/jsx-props-no-spreading */ }
+      {articlesData.map((article) => <Article key={article.url} {...article} />)}
     </section>
   );
 };
