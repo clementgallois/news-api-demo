@@ -39,6 +39,7 @@ function Search() {
   }
   return (
     <div className="search-page">
+      <h1>Search result</h1>
       {status === 'loading'
         ? <p>Loading...</p>
         : <ArticleList articlesData={articles} />}

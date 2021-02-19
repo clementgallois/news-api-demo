@@ -27,6 +27,7 @@ function Home() {
 
   return (
     <div className="home-page">
+      <h1>TOP 10 stories in Belgium</h1>
       {status === 'loading'
         ? <p>Loading...</p>
         : <ArticleList articlesData={articles} />}
