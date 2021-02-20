@@ -5,22 +5,23 @@ import { getTopArticles } from '../../services/newsApi';
 import { ArticleList } from '../../components';
 
 const Title = styled.h1`
-    font-style: normal;
-    font-weight: 600;
-    font-size: 2.5rem;
-    line-height: 1.2;
-    letter-spacing: -.005em;
-    margin-bottom: 1.5rem;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 2.5rem;
+  line-height: 1.2;
+  letter-spacing: -.005em;
+  margin-bottom: 1.5rem;
 
-    & span {
-      font-size: 1rem;
-      padding: 0 .25em;
-      font-weight: 400;
-    }
-    & span::before{
-      content: "·";
-      padding: 0 .25em;
-    }
+  & span {
+    font-size: 1rem;
+    padding: 0 .25em;
+    font-weight: 400;
+  }
+
+  & span::before{
+    content: "·";
+    padding: 0 .25em;
+  }
 `;
 
 function Home() {

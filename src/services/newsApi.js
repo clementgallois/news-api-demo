@@ -37,6 +37,11 @@ export async function getTopArticles(parameters) {
 }
 
 export async function getAllArticles(parameters) {
-  const response = await requestNewsApi('/everything', parameters);
+  let { q } = parameters;
+  const quoteOccurence = (q.match(/"/g) || []).length;
+  if (quoteOccurence % 2 !== 0) {
+    q = q.replace(/"([^"]*)$/, '$1');
+  }
+  const response = await requestNewsApi('/everything', { ...parameters, q });
   return response.articles;
 }
