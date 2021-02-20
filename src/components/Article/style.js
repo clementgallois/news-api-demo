@@ -130,9 +130,16 @@ export const Title = styled.h2`
 `;
 
 export const Content = styled.div`
-    grid-column: span 9;
+
     position: relative;
+
     padding-bottom: 1rem;
+${Section}:first-child &, ${Section}:nth-child(n+4) &{
+    padding-bottom:0;
+}
+${Section}:nth-child(n+6) & {
+    grid-column: span 9;
+}
 `;
 
 export const Description = styled.div`
