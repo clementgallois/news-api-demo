@@ -33,12 +33,40 @@ const Section = styled.section`
   }
 `;
 
-const Thumbnail = styled.img`
+// https://stackoverflow.com/a/61419334/4057637
+const Thumbnail = styled.div`
   position: relative;
+  display: block;
   width: 100%;
-  -webkit-transition: opacity .5s;
-  transition: opacity 1s;
-  opacity:${(props) => (props.imageLoaded ? '1' : '0')};
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  background-color: #a6a6a6;
+  border-radius: 0.25rem;
+
+  &::before {
+    display: block;
+    content: "";
+  }
+
+  & img {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    object-fit: cover;
+    -webkit-transition: opacity .5s ease;
+    transition: opacity 1s ease;
+    opacity: ${(props) => (props.imageLoaded ? 1 : 0)};
+  }
+
+  &::before {
+    padding-top: 56.25%;
+  }
 
 
   ${Section}:nth-child(n+6) &{
@@ -113,8 +141,17 @@ const Article = ({
         src={urlToImage}
         alt={title}
         imageLoaded={imageLoaded}
-        onLoad={() => setImageLoaded(true)}
-      />
+      >
+        {urlToImage
+        && (
+        <img
+          src={urlToImage}
+          alt={title}
+          onLoad={() => setImageLoaded(true)}
+          onError={() => setImageLoaded(false)}
+        />
+        )}
+      </Thumbnail>
       <Content>
         <Title>{title}</Title>
         <Source>
