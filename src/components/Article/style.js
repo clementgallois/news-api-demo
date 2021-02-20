@@ -7,22 +7,51 @@ export const Section = styled.section`
   font-weight: 400;
   border-bottom:none;
   color: black;
-  &:first-child{
-    grid-row: 1/span 2;
+
+  @media (max-width: 900px){
+    /* featured item on the right */
+    grid-column: span 4;
+
+    /* featured item bellow */
+    &:nth-child(n+4){
+        grid-column: span 6;
+      }
+    }
+  @media (max-width: 700px){
     grid-column: 1/span 6;
   }
 
+
+  /* featured item n°1 */
+  &:first-child{
+    grid-row: 1/span 2;
+    grid-column: 1/span 6;
+
+    @media (max-width: 900px){
+      grid-column: 1/span 8;
+    }
+
+    @media (max-width: 700px){
+      grid-column: 1/span 12;
+      grid-row: 1/span 1;
+    }
+  }
+
+
+  /* border below top row of featured item on the right */
   &:nth-child(n+2):nth-child(-n+3), &:nth-child(n+6){
     border-bottom: 1px solid;
     border-bottom-color: rgb(217 217 217);
   }
 
+  /* divider vertical list */
   &:nth-child(6){
     padding-top: 1rem !important;
     border-top:  1px solid;
     border-top-color: rgb(217 217 217);
   }
 
+  /* vertical list  */
   &:nth-child(n+6) {
     grid-column: span 12;
 
