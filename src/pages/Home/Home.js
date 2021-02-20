@@ -1,8 +1,27 @@
+import styled from 'styled-components';
 import { useEffect } from 'react';
 import { useAsync } from '../../hooks';
-
 import { getTopArticles } from '../../services/newsApi';
 import { ArticleList } from '../../components';
+
+const Title = styled.h1`
+    font-style: normal;
+    font-weight: 600;
+    font-size: 2.5rem;
+    line-height: 1.2;
+    letter-spacing: -.005em;
+    margin-bottom: 1.5rem;
+
+    & span {
+      font-size: 1rem;
+      padding: 0 .25em;
+      font-weight: 400;
+    }
+    & span::before{
+      content: "·";
+      padding: 0 .25em;
+    }
+`;
 
 function Home() {
   const {
@@ -27,7 +46,10 @@ function Home() {
 
   return (
     <>
-      <h1>TOP 10 stories in Belgium</h1>
+      <Title>
+        Top stories
+        <span>Belgium</span>
+      </Title>
       {status === 'loading'
         ? <p>Loading...</p>
         : <ArticleList articlesData={articles} />}

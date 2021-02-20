@@ -4,12 +4,10 @@ import Article from './Article';
 
 const Grid = styled.section`
   display: grid;
-    -ms-flex-align: start;
-    -ms-flex-pack: justify;
-    grid-column-gap: 1.5rem;
-    grid-row-gap: 1.5rem;
-    grid-template-columns: repeat(12,1fr);
-    grid-auto-flow: dense;
+  grid-column-gap: 1.5rem;
+  grid-row-gap: 1.5rem;
+  grid-template-columns: repeat(12,1fr);
+  grid-auto-flow: dense;
 `;
 
 const ArticleList = ({ articlesData }) => {

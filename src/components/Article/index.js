@@ -59,7 +59,6 @@ const Thumbnail = styled.div`
     height: 100%;
     border: 0;
     object-fit: cover;
-    -webkit-transition: opacity .5s ease;
     transition: opacity 1s ease;
     opacity: ${(props) => (props.imageLoaded ? 1 : 0)};
   }
@@ -138,8 +137,6 @@ const Article = ({
   return (
     <Section className="article">
       <Thumbnail
-        src={urlToImage}
-        alt={title}
         imageLoaded={imageLoaded}
       >
         {urlToImage
