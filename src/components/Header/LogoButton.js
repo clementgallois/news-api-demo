@@ -13,10 +13,10 @@ padding: 0;
 font: inherit;
 cursor: pointer;
 
-    height: 100%;
+    height: calc(100% - 20px);
     width: auto;
-    padding: 10px;
-    padding-left: 0%;
+    margin: 10px;
+    margin-left: 0%;
 
 `;
 const LLogo = styled(Logo)`
