@@ -78,7 +78,7 @@ export const Thumbnail = styled.div`
   position: relative;
   display: block;
   width: 100%;
-  height: auto;
+  height: fit-content;
   padding: 0;
   margin: 0;
   overflow: hidden;
@@ -164,13 +164,6 @@ export const Title = styled.h2`
     padding: 0;
     font-size: 1.5;
     line-height: 1.286;
-    @media(max-width: 600px){
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-    }
   }
   ${Link} &{
     transition-property: text-decoration;
