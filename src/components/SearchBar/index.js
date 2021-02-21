@@ -76,7 +76,16 @@ function SearchBar() {
     <Wrapper>
       <Icon className="fa fa-search" />
       <Input className="search" type="text" placeholder="search" onChange={handleChangeSearchBar} value={value} />
-      <ButtonWithoutStyle ref={buttonRef} type="button" aria-label="Cancel Search" onClick={handleCancel}><Icon className="fa fa-times" /></ButtonWithoutStyle>
+      {value && (
+      <ButtonWithoutStyle
+        ref={buttonRef}
+        type="button"
+        aria-label="Cancel Search"
+        onClick={handleCancel}
+      >
+        <Icon className="fa fa-times" />
+      </ButtonWithoutStyle>
+      )}
     </Wrapper>
   );
 }
