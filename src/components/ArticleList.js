@@ -1,6 +1,10 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import {
+  useHistory,
+} from 'react-router-dom';
 import Article from './Article';
+import Error from './Error';
 
 const Grid = styled.section`
   display: grid;
@@ -11,8 +15,11 @@ const Grid = styled.section`
 `;
 
 const ArticleList = ({ articlesData }) => {
+  const history = useHistory();
   if (!articlesData || articlesData.length === 0) {
-    return (<p>No Result to Display</p>);
+    return (
+      <Error inPage errorMessage="We didn't find any result" callback={() => history.push('./')} buttonText="Go Home" />
+    );
   }
   return (
     <Grid>
