@@ -11,18 +11,15 @@ example :
 REACT_APP_NEWS_API_KEY=4b58f4c308db3236ab12b94075d50ad6
 REACT_APP_NEWS_API_URL=https://newsapi.org/v2
 ```
+## Installation
 
-## Available Scripts
-
-In the project directory, you can run:
+You need to run `npm install`in order to download and install the required packages
 
 ### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
 ### `npm run build`
 
