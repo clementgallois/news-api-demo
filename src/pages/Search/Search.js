@@ -48,7 +48,7 @@ function Search() {
       <Title>
         Search result
       </Title>
-      {status === 'loading'
+      {status !== 'success'
         ? <p>Loading...</p>
         : <ArticleList articlesData={articles} />}
     </>
