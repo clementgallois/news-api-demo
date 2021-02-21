@@ -1,7 +1,7 @@
 import {
   useHistory,
 } from 'react-router-dom';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 
 import { useQueryParameters } from '../../hooks';
@@ -49,8 +49,12 @@ const ButtonWithoutStyle = styled.button`
 function SearchBar() {
   const buttonRef = useRef(null);
   const queryParameters = useQueryParameters();
-  const [value, setValue] = useState(queryParameters || '');
+  const [value, setValue] = useState(queryParameters);
   const history = useHistory();
+
+  useEffect(() => {
+    setValue(queryParameters);
+  }, [queryParameters]);
 
   const handleChangeSearchBar = (event) => {
     setValue(event.target.value);
