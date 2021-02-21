@@ -15,8 +15,8 @@ export const Section = styled.section`
     /* featured item bellow */
     &:nth-child(n+4){
         grid-column: span 6;
-      }
     }
+  }
   @media (max-width: 700px){
     grid-column: 1/span 6;
   }
@@ -85,11 +85,6 @@ export const Thumbnail = styled.div`
   background-color: #a6a6a6;
   border-radius: 0.25rem;
 
-  &::before {
-    display: block;
-    content: "";
-  }
-
   & img {
     position: absolute;
     top: 0;
@@ -107,14 +102,21 @@ export const Thumbnail = styled.div`
   }
 
   &::before {
+    display: block;
+    content: "";
     padding-top: 56.25%;
   }
 
   ${Section}:nth-child(n+6) &{
-      grid-column: span 3;
+      grid-column: span 4;
       margin-bottom: 1.5rem;
+      @media (max-width: 599px){
+        grid-row: 1/span 2;
+        grid-column: span 5;
+    }
   }
 
+  /* animation when hover article */
   ${Link} &  {
     transition-property:  filter;
     transition-duration: 0s;
@@ -136,16 +138,39 @@ export const Title = styled.h2`
   text-decoration: underline;
   text-decoration-color: transparent;
   
+  @media (max-width: 800px){
+    font-size: 1rem;
+    line-height: 1.25;
+  }
+
   ${Section}:first-child &{
     font-size: 2rem;
     line-height: 1.2;
     padding: 1.5rem 0 0;
+
+    @media (max-width: 1000px){
+      font-size: 1.75rem;
+      line-height: 1.179;
+    }
+    @media (max-width: 700px){
+      padding: 1rem 0 0;
+    }
+    @media (max-width: 400px){
+      font-size: 1.18rem;
+    }
   }
 
   ${Section}:nth-child(n+6) & {
     padding: 0;
     font-size: 1.5;
     line-height: 1.286;
+    @media(max-width: 600px){
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+    }
   }
   ${Link} &{
     transition-property: text-decoration;
@@ -167,7 +192,10 @@ ${Section}:first-child &, ${Section}:nth-child(n+4) &{
     padding-bottom:0;
 }
 ${Section}:nth-child(n+6) & {
-    grid-column: span 9;
+    grid-column: span 8;
+    @media (max-width: 599px){
+        grid-column: span 7;
+    }
 }
 `;
 
@@ -183,6 +211,13 @@ export const Description = styled.div`
 
   ${Section}:nth-child(n+6) &{
     display: block;
+    @media (max-width: 600px){
+        display: none;
+    }
+
+    @media (max-width: 1000px) {
+        font-size: 0.85rem;
+    }
   }
 `;
 
@@ -194,8 +229,19 @@ export const Source = styled.div`
   cite {
     font-style: normal;
   }
-
+  
+  .author{
+      display: none;
+  }
+@media (max-width: 1023px){
+    font-size: 0.85rem;
+    line-height: 1.429;
+}
   ${Section}:first-child & {
     padding: 0.75rem 0 1rem;
+
+    @media(max-width: 900px){
+      padding: 0.5rem 0;
+    }
   }
 `;
