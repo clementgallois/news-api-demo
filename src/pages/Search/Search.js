@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDebouncedCallback } from 'use-debounce';
 import styled from 'styled-components';
 import { getAllArticles } from '../../services/newsApi';
-import { ArticleList, Error } from '../../components';
+import { ArticleList, Error, LoadingIndicator } from '../../components';
 import { useAsync, useQueryParameters } from '../../hooks';
 
 const Title = styled.h1`
@@ -49,7 +49,7 @@ function Search() {
         Search result
       </Title>
       {status !== 'success'
-        ? <p>Loading...</p>
+        ? <LoadingIndicator />
         : <ArticleList articlesData={articles} />}
     </>
   );

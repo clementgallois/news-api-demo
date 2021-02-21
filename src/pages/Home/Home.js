@@ -1,8 +1,9 @@
+/* eslint-disable no-unused-vars */
 import styled from 'styled-components';
 import { useEffect } from 'react';
 import { useAsync } from '../../hooks';
 import { getTopArticles } from '../../services/newsApi';
-import { ArticleList, Error } from '../../components';
+import { ArticleList, Error, LoadingIndicator } from '../../components';
 
 const Title = styled.h1`
   font-style: normal;
@@ -48,9 +49,10 @@ function Home() {
         Top stories
         <span>Belgium</span>
       </Title>
+
       {status === 'loading'
-        ? <p>Loading...</p>
-        : <ArticleList articlesData={articles} />}
+        ? <LoadingIndicator />
+        : <ArticleList articlesData={articles} /> }
 
     </>
   );

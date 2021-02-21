@@ -3,6 +3,7 @@ import SearchBar from './SearchBar';
 import Header from './Header';
 import MainContent from './MainContent';
 import Error from './Error';
+import LoadingIndicator from './LoadingIndicator';
 
 export {
   // eslint-disable-next-line import/prefer-default-export
@@ -11,4 +12,5 @@ export {
   Header,
   MainContent,
   Error,
+  LoadingIndicator,
 };
