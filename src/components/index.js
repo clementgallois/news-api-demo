@@ -1,7 +1,7 @@
 import ArticleList from './ArticleList';
 import SearchBar from './SearchBar';
 import Header from './Header';
-import MainContent from './MainContent';
+import PageContainer from './PageContainer';
 import Error from './Error';
 import LoadingIndicator from './LoadingIndicator';
 import Button from './Button';
@@ -11,7 +11,7 @@ export {
   ArticleList,
   SearchBar,
   Header,
-  MainContent,
+  PageContainer,
   Error,
   LoadingIndicator,
   Button,

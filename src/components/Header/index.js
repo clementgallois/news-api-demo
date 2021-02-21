@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { ReactComponent as Logo } from '../../assets/news.svg';
 import SearchBar from '../SearchBar';
-import MainContent from '../MainContent';
+import PageContainer from '../PageContainer';
 
 const StyledHeader = styled.header`
     box-shadow: 0 2px 12px rgb(0 0 0 / 8%);;
@@ -13,7 +13,7 @@ const StyledHeader = styled.header`
     z-index: 1;
 `;
 
-const Wrappers = styled(MainContent)`
+const Wrappers = styled(PageContainer)`
     height: 4rem;
     display: flex;
     justify-content: space-between;

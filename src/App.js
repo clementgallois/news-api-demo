@@ -6,14 +6,14 @@ import {
 import Home from './pages/Home';
 import Search from './pages/Search';
 import './App.css';
-import { Header, MainContent } from './components';
+import { Header, PageContainer } from './components';
 
 function App() {
   return (
     <Router>
       <div className="App">
         <Header />
-        <MainContent>
+        <PageContainer>
           <Switch>
             <Route exact path="/">
               <Home />
@@ -22,7 +22,7 @@ function App() {
               <Search />
             </Route>
           </Switch>
-        </MainContent>
+        </PageContainer>
       </div>
     </Router>
   );
