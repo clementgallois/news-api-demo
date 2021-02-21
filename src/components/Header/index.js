@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { ReactComponent as Logo } from './news.svg';
+import { ReactComponent as Logo } from '../../assets/news.svg';
 import SearchBar from '../SearchBar';
 import MainContent from '../MainContent';
 

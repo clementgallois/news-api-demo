@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import bear from './BEAR08.png';
-import bearMobile from './BEAR03.png';
+import bear from '../../assets/BEAR08.png';
+import bearMobile from '../../assets/BEAR03.png';
 
 const Wrapper = styled.div`
     position: absolute;
