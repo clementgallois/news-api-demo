@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-import { ReactComponent as Logo } from '../../assets/news.svg';
 import SearchBar from '../SearchBar';
 import PageContainer from '../PageContainer';
+import LogoButton from './LogoButton';
 
 const StyledHeader = styled.header`
     box-shadow: 0 2px 12px rgb(0 0 0 / 8%);;
@@ -22,17 +22,10 @@ const Wrappers = styled(PageContainer)`
 
 `;
 
-const StyledLogo = styled(Logo)`
-    height: calc(100% - 20px);
-    width: auto;
-    padding: 10px;
-    padding-left: 0%;
-`;
 const Header = () => (
   <StyledHeader className="App-header">
     <Wrappers>
-      <StyledLogo />
-
+      <LogoButton />
       <SearchBar />
     </Wrappers>
   </StyledHeader>
