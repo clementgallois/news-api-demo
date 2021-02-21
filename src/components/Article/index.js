@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import {
-  Section, Link, Thumbnail, Content, Title, Source, Description,
+  ArticleContainer, Link, Thumbnail, Content, Title, Source, Description,
 } from './style';
 
 const Article = ({
@@ -11,7 +11,7 @@ const Article = ({
 }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
   return (
-    <Section>
+    <ArticleContainer>
       <Link href={url}>
         <Thumbnail
           imageLoaded={imageLoaded}
@@ -42,7 +42,7 @@ const Article = ({
           <Description>{description || content}</Description>
         </Content>
       </Link>
-    </Section>
+    </ArticleContainer>
   );
 };
 

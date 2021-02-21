@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Section = styled.section`
+export const ArticleContainer = styled.article`
   grid-column: span 3;
   padding: 0;
   font-family: "Helvetica Neue",Helvetica,Arial,Sans-Serif;;
@@ -107,7 +107,7 @@ export const Thumbnail = styled.div`
     padding-top: 56.25%;
   }
 
-  ${Section}:nth-child(n+6) &{
+  ${ArticleContainer}:nth-child(n+6) &{
       grid-column: span 4;
       margin-bottom: 1.5rem;
       @media (max-width: 599px){
@@ -143,7 +143,7 @@ export const Title = styled.h2`
     line-height: 1.25;
   }
 
-  ${Section}:first-child &{
+  ${ArticleContainer}:first-child &{
     font-size: 2rem;
     line-height: 1.2;
     padding: 1.5rem 0 0;
@@ -160,7 +160,7 @@ export const Title = styled.h2`
     }
   }
 
-  ${Section}:nth-child(n+6) & {
+  ${ArticleContainer}:nth-child(n+6) & {
     padding: 0;
     font-size: 1.5;
     line-height: 1.286;
@@ -181,10 +181,10 @@ export const Content = styled.div`
     position: relative;
 
     padding-bottom: 1rem;
-${Section}:first-child &, ${Section}:nth-child(n+4) &{
+${ArticleContainer}:first-child &, ${ArticleContainer}:nth-child(n+4) &{
     padding-bottom:0;
 }
-${Section}:nth-child(n+6) & {
+${ArticleContainer}:nth-child(n+6) & {
     grid-column: span 8;
     @media (max-width: 599px){
         grid-column: span 7;
@@ -198,11 +198,11 @@ export const Description = styled.div`
   margin: 0;
   padding-bottom: 1em;
 
-  ${Section}:first-child &{
+  ${ArticleContainer}:first-child &{
     display: block;
   }
 
-  ${Section}:nth-child(n+6) &{
+  ${ArticleContainer}:nth-child(n+6) &{
     display: block;
     @media (max-width: 600px){
         display: none;
@@ -230,7 +230,7 @@ export const Source = styled.div`
     font-size: 0.85rem;
     line-height: 1.429;
 }
-  ${Section}:first-child & {
+  ${ArticleContainer}:first-child & {
     padding: 0.75rem 0 1rem;
 
     @media(max-width: 900px){
