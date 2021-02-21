@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { useEffect } from 'react';
 import { useAsync } from '../../hooks';
 import { getTopArticles } from '../../services/newsApi';
-import { ArticleList } from '../../components';
+import { ArticleList, Error } from '../../components';
 
 const Title = styled.h1`
   font-style: normal;
@@ -35,13 +35,10 @@ function Home() {
 
   if (status === 'error') {
     return (
-      <div>
-        <p>
-          Error:
-          {error.message}
-        </p>
-        <button onClick={() => execute({ pageSize: 10, country: 'be' })} type="button">Try Again</button>
-      </div>
+      <Error
+        errorMessage={error?.message}
+        tryAgainCallback={() => execute({ pageSize: 10, country: 'be' })}
+      />
     );
   }
 

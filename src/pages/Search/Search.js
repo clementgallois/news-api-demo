@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDebouncedCallback } from 'use-debounce';
 import styled from 'styled-components';
 import { getAllArticles } from '../../services/newsApi';
-import { ArticleList } from '../../components';
+import { ArticleList, Error } from '../../components';
 import { useAsync, useQueryParameters } from '../../hooks';
 
 const Title = styled.h1`
@@ -37,13 +37,10 @@ function Search() {
 
   if (status === 'error') {
     return (
-      <div>
-        <p>
-          Error:
-          {error.message}
-        </p>
-        <button onClick={() => execute({ q: searchQuery })} type="button">Try Again</button>
-      </div>
+      <Error
+        errorMessage={error?.message}
+        tryAgainCallback={() => execute({ q: searchQuery })}
+      />
     );
   }
   return (
