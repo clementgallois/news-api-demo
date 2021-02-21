@@ -36,12 +36,22 @@ export async function getTopArticles(parameters) {
   return response.articles;
 }
 
-export async function getAllArticles(parameters) {
-  let { q } = parameters;
-  const quoteOccurence = (q.match(/"/g) || []).length;
-  if (quoteOccurence % 2 !== 0) {
-    q = q.replace(/"([^"]*)$/, '$1');
+// remove all advanced options for the search
+function sanitizeQuery(query) {
+  let matched = false;
+  let str = query.replaceAll(/["()\-+]|[ \t]+(and|or)([ \t]+|$)/gi, (match) => {
+    if (match) {
+      matched = true;
+    }
+    return ' ';
+  });
+  if (matched) {
+    str = sanitizeQuery(str);
   }
-  const response = await requestNewsApi('/everything', { ...parameters, q });
+  return str;
+}
+
+export async function getAllArticles(parameters) {
+  const response = await requestNewsApi('/everything', { ...parameters, q: sanitizeQuery(parameters.q) });
   return response.articles;
 }
