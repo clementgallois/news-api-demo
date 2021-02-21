@@ -29,7 +29,7 @@ const Article = ({
         <Content>
           <Title>{title}</Title>
           <Source>
-            <cite>{source?.name ? source.name : 'Unknown source'}</cite>
+            <cite>{source?.name || 'Unknown source'}</cite>
             {' '}
             {author && (
             <span className="author">
