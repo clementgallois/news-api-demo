@@ -3,15 +3,11 @@ import styled from 'styled-components';
 import { useEffect } from 'react';
 import { useAsync } from '../../hooks';
 import { getTopArticles } from '../../services/newsApi';
-import { ArticleList, Error, LoadingIndicator } from '../../components';
+import {
+  ArticleList, Error, LoadingIndicator, PageTitle,
+} from '../../components';
 
-const Title = styled.h1`
-  font-style: normal;
-  font-weight: 600;
-  font-size: 2.5rem;
-  line-height: 1.2;
-  letter-spacing: -.005em;
-  margin-bottom: 1.5rem;
+const TitleWithDetails = styled(PageTitle)`
 
   & span {
     font-size: 1rem;
@@ -45,10 +41,10 @@ function Home() {
 
   return (
     <>
-      <Title>
+      <TitleWithDetails>
         Top stories
         <span>Belgium</span>
-      </Title>
+      </TitleWithDetails>
 
       {status === 'loading'
         ? <LoadingIndicator />

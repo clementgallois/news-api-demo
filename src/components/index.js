@@ -5,6 +5,8 @@ import PageContainer from './PageContainer';
 import Error from './Error';
 import LoadingIndicator from './LoadingIndicator';
 import Button from './Button';
+import PageTitle from './PageTitle';
+import PageContentWrapper from './PageContentWrapper';
 
 export {
   // eslint-disable-next-line import/prefer-default-export
@@ -15,4 +17,6 @@ export {
   Error,
   LoadingIndicator,
   Button,
+  PageTitle,
+  PageContentWrapper,
 };

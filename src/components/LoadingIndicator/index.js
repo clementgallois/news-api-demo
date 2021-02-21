@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import PageContentWrapper from '../PageContentWrapper';
 
 const LoaderSpiner = styled.div`
 & {
@@ -33,35 +34,14 @@ const LoaderSpiner = styled.div`
     transform: rotateY(3600deg);
   }
 }
-
-`;
-
-const Wrapper = styled.div`
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: inherit;
-    top: 50%;
-    transform: translateY(-50%);
-    width: ${(props) => (props.inPage ? '100%' : 'inherit')};
-
-    
-  max-width:1140px;
-  @media (max-width: 719px){
-    padding: 0 1.5rem;
-}
-  @media (max-width: 599px){
-    padding: 0 1rem;
-}
 `;
 
 const LoadingIndicator = () => (
-  <Wrapper inPage>
+  <PageContentWrapper inPage>
     <LoaderSpiner>
       <div />
     </LoaderSpiner>
-  </Wrapper>
+  </PageContentWrapper>
 );
 
 export default LoadingIndicator;

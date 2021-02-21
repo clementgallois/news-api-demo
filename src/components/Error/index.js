@@ -4,26 +4,7 @@ import styled from 'styled-components';
 import bear from '../../assets/BEAR08.png';
 import bearMobile from '../../assets/BEAR03.png';
 import Button from '../Button';
-
-const Wrapper = styled.div`
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: inherit;
-    top: 50%;
-    transform: translateY(-50%);
-    width: ${(props) => (props.inPage ? '100%' : 'inherit')};
-
-    
-  max-width:1140px;
-  @media (max-width: 719px){
-    padding: 0 1.5rem;
-}
-  @media (max-width: 599px){
-    padding: 0 1rem;
-}
-`;
+import PageContentWrapper from '../PageContentWrapper';
 
 const ErrorIllustration = styled.div`
   width: 100%;
@@ -64,7 +45,7 @@ function Error({
   errorMessage, callback, buttonText, inPage,
 }) {
   return (
-    <Wrapper inPage={inPage}>
+    <PageContentWrapper inPage={inPage}>
       <IllustrationWrapper>
         <ErrorIllustration src={bear} alt="error illustration" />
       </IllustrationWrapper>
@@ -73,7 +54,7 @@ function Error({
         {errorMessage}
       </ErrorMessage>
       <Button onClick={callback} type="button">{buttonText}</Button>
-    </Wrapper>
+    </PageContentWrapper>
   );
 }
 

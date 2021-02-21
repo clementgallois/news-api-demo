@@ -1,18 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useDebouncedCallback } from 'use-debounce';
-import styled from 'styled-components';
 import { getAllArticles } from '../../services/newsApi';
-import { ArticleList, Error, LoadingIndicator } from '../../components';
+import {
+  ArticleList, Error, LoadingIndicator, PageTitle,
+} from '../../components';
 import { useAsync, useQueryParameters } from '../../hooks';
 
-const Title = styled.h1`
-    font-style: normal;
-    font-weight: 600;
-    font-size: 2.5rem;
-    line-height: 1.2;
-    letter-spacing: -.005em;
-    margin-bottom: 1.5rem;
-`;
 function Search() {
   const {
     execute, status, value: articles, error,
@@ -45,9 +38,9 @@ function Search() {
   }
   return (
     <>
-      <Title>
+      <PageTitle>
         Search result
-      </Title>
+      </PageTitle>
       {status !== 'success'
         ? <LoadingIndicator />
         : <ArticleList articlesData={articles} />}
